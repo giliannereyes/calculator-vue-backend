@@ -3,9 +3,18 @@ package com.giliannereyes.calculatorspring.service;
 import org.springframework.stereotype.Service;
 import java.util.Stack;
 
+/**
+ * Business service that parses and evaluates arithmetic expressions.
+ */
 @Service
 public class CalculatorService {
 
+  /**
+   * Evaluates an arithmetic expression using operator precedence rules.
+   *
+   * @param expression infix expression containing numbers and +, -, *, /
+   * @return computed result as a double
+   */
   public double calculate(String expression) {
     return evaluate(expression);
   }

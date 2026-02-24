@@ -3,26 +3,35 @@ package com.giliannereyes.calculatorspring.controller;
 import com.giliannereyes.calculatorspring.model.CalculationRequest;
 import com.giliannereyes.calculatorspring.model.CalculationResponse;
 import com.giliannereyes.calculatorspring.service.CalculatorService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * REST controller exposing calculator operations.
+ */
 @RestController
 @RequestMapping("/api/calculator")
 @CrossOrigin(origins = "http://localhost:5173")
 public class CalculatorController {
-  private static final Logger logger = LoggerFactory.getLogger(CalculatorController.class);
   private final CalculatorService calculatorService;
 
+  /**
+   * Creates a controller with the calculator business service.
+   *
+   * @param calculatorService service responsible for expression evaluation
+   */
   public CalculatorController(CalculatorService calculatorService) {
     this.calculatorService = calculatorService;
   }
 
+  /**
+   * Evaluates a mathematical expression and returns the numeric result.
+   *
+   * @param request payload containing the expression to evaluate
+   * @return response object containing the computed result
+   */
   @PostMapping("/calculate")
   public CalculationResponse calculate(@RequestBody CalculationRequest request) {
-    logger.info("Received expression: {}", request.getExpression());
     double result = calculatorService.calculate(request.getExpression());
-    logger.info("Result: {}", result);
     return new CalculationResponse(result);
   }
 }
