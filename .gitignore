@@ -1,9 +1,16 @@
 HELP.md
 target/
+.mvn/wrapper/
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 data/
+.mvn/
+mvn
+mvnw
+mvnw.cmd
+.gitattributes
+
 
 ### STS ###
 .apt_generated
